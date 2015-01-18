@@ -10,15 +10,18 @@ var stateActions = { preload: preload, create: create, update: update };
 var game = new Phaser.Game(750, 300, Phaser.AUTO, 'game', stateActions);
 
 var score = 0;
+
 var label_text;
+
 var player;
 
 /*
  * Loads all resources for the game and gives them names.
  */
 function preload() {
-game.load.image("flappy", "assets/flappy.png");
-game.load.audio("score", "assets/point.ogg");
+
+    game.load.image("flappy", "assets/flappy.png");
+    game.load.audio("score", "assets/point.ogg");
 }
 
 /*
@@ -26,17 +29,19 @@ game.load.audio("score", "assets/point.ogg");
  */
 function create() {
     // set the background colour of the scene
- game.stage.setBackgroundColor("#99FF99");
- game.add.text(20, 250, "Welcome to Flapper",
-    {font: "20px Arial", fill:"#009933"});
+    game.stage.setBackgroundColor("#99FF99");
 
- game.add.sprite(15, 200, "flappy");
+    game.add.text(20, 250, "Welcome to Flapper",
+    {font: "20px Arial", fill:"#009933"})
+
+    game.add.sprite(15, 200, "flappy");
 
     game.input.onDown.add(clickHandler);
+
     game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.add(changeScore);
 
-label_text = game.add.text(20,20, "0");
-player = game.add.sprite(100, 200, "flappy");
+    label_text = game.add.text(20,20, "0");
+    player = game.add.sprite(100, 200, "flappy");
 
     game.input.keyboard.addKey(Phaser.Keyboard.RIGHT).onDown.add(moveRight);
     game.input.keyboard.addKey(Phaser.Keyboard.LEFT).onDown.add(moveLeft);
